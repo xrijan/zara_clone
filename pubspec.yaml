@@ -8,18 +8,19 @@ version: 1.0.0+1
 environment:
   sdk: '>=3.3.3 <4.0.0'
 dependencies:
+  cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
-  cupertino_icons: ^1.0.6
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
+  flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
 flutter:
   uses-material-design: true
-  # assets:
-  #   - images/a_dot_burr.jpeg
+  assets:
+    - images/
   #   - images/a_dot_ham.jpeg
   fonts:
     - family: SourceSans3
