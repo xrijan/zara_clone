@@ -4,15 +4,17 @@ class TextFormFieldWidget extends StatelessWidget {
   final String labelText;
   final TextEditingController controller;
   final void Function(String)? onChanged;
+  final void Function(String?)? onSaved;
   final String? Function(String?)? validator;
   final void Function()? suffixIconOnTap;
   const TextFormFieldWidget(
       {super.key,
       required this.controller,
+      required this.labelText,
       this.onChanged,
       this.validator,
       this.suffixIconOnTap,
-      required this.labelText});
+       this.onSaved});
 
   @override
   Widget build(BuildContext context) {
@@ -23,17 +25,8 @@ class TextFormFieldWidget extends StatelessWidget {
       cursorHeight: 16,
       cursorWidth: 2,
       maxLines: 1,
-      // onChanged: (value) {
-      //   setState(() {});
-      //   _formKey.currentState!.validate();
-      // },
       onChanged: onChanged,
-      // validator: (val) {
-      //   if (val!.isEmpty) {
-      //     return 'Email is required';
-      //   }
-      //   return null;
-      // },
+      onSaved: onSaved,
       validator: validator,
       decoration: InputDecoration(
         labelText: labelText,
@@ -43,10 +36,6 @@ class TextFormFieldWidget extends StatelessWidget {
             ),
         suffixIcon: controller.text.isNotEmpty
             ? GestureDetector(
-                // onTap: () {
-                //   _emailController.clear();
-                //   setState(() {});
-                // },
                 onTap: suffixIconOnTap,
                 child: Container(
                     margin: const EdgeInsets.only(left: 28),

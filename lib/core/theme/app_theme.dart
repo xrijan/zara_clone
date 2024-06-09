@@ -12,10 +12,9 @@ class AppTheme {
         fontSize: 24,
         fontFamily: 'SourceSans3',
       ), // White for headings
-      bodyLarge: TextStyle(
-          color: Colors.white, fontSize: 16, fontFamily: 'SourceSans3'),
-      bodySmall: TextStyle(
-          color: Colors.white, fontSize: 12, fontFamily: 'SourceSans3'),
+      bodyLarge: TextStyle(color: Colors.white, fontSize: 16, fontFamily: 'SourceSans3'),
+      bodyMedium: TextStyle(color: Colors.white, fontSize: 14, fontFamily: 'SourceSans3'),
+      bodySmall: TextStyle( color: Colors.white, fontSize: 12, fontFamily: 'SourceSans3'),
     ),
 
     // Define the default AppBarTheme. Use this to specify the default
@@ -49,6 +48,25 @@ class AppTheme {
       hintStyle: TextStyle(
         color: Colors.white54, // Color of the hint text
         fontFamily: 'SourceSans3',
+      ),
+    ),
+
+    //outline button theme
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: ButtonStyle(
+        backgroundColor: WidgetStateProperty.all(Colors.black),
+        overlayColor: WidgetStateProperty.all(const Color.fromARGB(255, 29, 28, 28)),
+        textStyle: WidgetStateProperty.all(
+          const TextStyle(
+            color: Colors.white,
+            fontFamily: 'SourceSans3',
+          ),
+        ),
+        side: WidgetStateProperty.all(const BorderSide(color: Colors.white)),
+        shape: WidgetStateProperty.all(
+          const RoundedRectangleBorder(
+          ),
+        ),
       ),
     ),
   );
