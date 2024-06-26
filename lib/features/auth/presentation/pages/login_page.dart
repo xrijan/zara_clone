@@ -23,89 +23,90 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Form _buildFormBody(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'LOG IN TO YOUR ACCOUNT',
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          const SizedBox(height: 40),
-          TextFormFieldWidget(
-              controller: _emailController,
-              labelText: 'EMAIL',
+  Widget _buildFormBody(BuildContext context) {
+    return SingleChildScrollView(
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'LOG IN TO YOUR ACCOUNT',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            const SizedBox(height: 40),
+            TextFormFieldWidget(
+                controller: _emailController,
+                labelText: 'EMAIL',
+                onChanged: (value) {
+                  setState(() {});
+                  _formKey.currentState!.validate();
+                },
+                suffixIconOnTap: () {
+                  _emailController.clear();
+                  setState(() {});
+                },
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return 'This field is mandatory';
+                  } else if (Validate.isEmail(value) == false) {
+                    return 'Please enter a valid email address';
+                  }
+                  return null;
+                }),
+            const SizedBox(height: 20),
+            PasswordFormFieldWidget(
+              controller: _passwordController,
+              labelText: 'PASSWORD',
               onChanged: (value) {
                 setState(() {});
                 _formKey.currentState!.validate();
               },
-              suffixIconOnTap: () {
-                _emailController.clear();
-                setState(() {});
-              },
               validator: (value) {
                 if (value!.isEmpty) {
                   return 'This field is mandatory';
-                } else if (Validate.isEmail(value) == false) {
-                  return 'Please enter a valid email address';
                 }
                 return null;
-              }),
-          const SizedBox(height: 20),
-          PasswordFormFieldWidget(
-            controller: _passwordController,
-            labelText: 'PASSWORD',
-            onChanged: (value) {
-              setState(() {});
-              _formKey.currentState!.validate();
-            },
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'This field is mandatory';
-              }
-              return null;
-            },
-          ),
-          const SizedBox(height: 20),
-          SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'LOG IN',
-                    style: TextStyle(color: Colors.white),
-                  ))),
-          const SizedBox(height: 20),
-          Text(
-            'Have you forgotten your password?',
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-          const SizedBox(height: 60),
-          Text(
-            'NEED AN ACCOUNT?',
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          const SizedBox(height: 20),
-          SizedBox(
-              width: double.infinity,
-              child: OutlinedButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'REGISTER',
-                    style: TextStyle(color: Colors.white),
-                  ))),
-          const Spacer(),
-          Text(
-            'Help center',
-            style: Theme.of(context)
-                .textTheme
-                .bodyLarge!
-                .copyWith(decoration: TextDecoration.underline),
-          ),
-          const SizedBox(height: 40),
-        ],
+              },
+            ),
+            const SizedBox(height: 20),
+            SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'LOG IN',
+                      style: TextStyle(color: Colors.white),
+                    ))),
+            const SizedBox(height: 20),
+            Text(
+              'Have you forgotten your password?',
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
+            const SizedBox(height: 60),
+            Text(
+              'NEED AN ACCOUNT?',
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            const SizedBox(height: 20),
+            SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'REGISTER',
+                      style: TextStyle(color: Colors.white),
+                    ))),
+            Text(
+              'Help center',
+              style: Theme.of(context)
+                  .textTheme
+                  .bodyLarge!
+                  .copyWith(decoration: TextDecoration.underline),
+            ),
+            const SizedBox(height: 40),
+          ],
+        ),
       ),
     );
   }
